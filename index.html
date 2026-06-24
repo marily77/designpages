@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Design Showcase</title>
+  <meta name="description" content="A multi-style design exploration showcasing classic, brutalist, product, retro and motion ad design approaches.">
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/classic.css">
+  <link rel="stylesheet" href="css/brutalist.css">
+  <link rel="stylesheet" href="css/retro.css">
+  <link rel="stylesheet" href="css/ads.css">
+</head>
+<body>
+
+  <!-- Scroll progress indicator -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Custom cursor follower (decorative) -->
+  <div id="cursor-follower" aria-hidden="true"></div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <header id="site-header">
+    <nav class="main-nav" aria-label="Primary navigation">
+      <a href="#hero" class="logo">IDS</a>
+      <ul class="nav-links">
+        <li><a href="#classic">Classic</a></li>
+        <li><a href="#brutalist">Brutalist</a></li>
+        <li><a href="#product">Product</a></li>
+        <li><a href="#retro">Retro</a></li>
+        <li><a href="#motion-ads">Motion Ads</a></li>
+      </ul>
+      <button id="theme-switcher" aria-label="Switch theme">
+        Theme
+      </button>
+    </nav>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-content">
+      <h1>Interactive Design Showcase</h1>
+      <p class="hero-subtitle">
+        Exploring design styles, motion design and user experience.
+      </p>
+      <a href="#classic" class="cta-button">Explore Projects</a>
+    </div>
+  </section>
+
+  <!-- ============ PROJECT 1: CLASSIC ============ -->
+  <section id="classic" class="project-section" data-theme="classic">
+    <header class="project-intro">
+      <span class="project-label">01 — Classic Design</span>
+      <h2>Consulting Firm</h2>
+      <p>A grid-based, typography-driven layout exploring whitespace and structure.</p>
+    </header>
+
+    <div class="classic-hero">
+      <h3>We help companies grow with clarity.</h3>
+    </div>
+
+    <div class="classic-services">
+      <h3>Services</h3>
+      <!-- service cards go here -->
+    </div>
+
+    <div class="classic-about">
+      <h3>About</h3>
+      <!-- about content goes here -->
+    </div>
+
+    <div class="classic-timeline">
+      <h3>Timeline</h3>
+      <!-- timeline items go here -->
+    </div>
+
+    <div class="classic-contact">
+      <h3>Contact</h3>
+      <!-- contact form / info goes here -->
+    </div>
+  </section>
+
+  <!-- ============ PROJECT 2: BRUTALIST ============ -->
+  <section id="brutalist" class="project-section" data-theme="brutalist">
+    <header class="project-intro">
+      <span class="project-label">02 — Brutalist Design</span>
+      <h2>Digital Art Festival</h2>
+      <p>Bold typography, high contrast, deliberately raw and unconventional.</p>
+    </header>
+
+    <div class="brutalist-grid">
+      <!-- oversized headline blocks / event info -->
+    </div>
+  </section>
+
+  <!-- ============ PROJECT 3: PRODUCT ============ -->
+  <section id="product" class="project-section" data-theme="product">
+    <header class="project-intro">
+      <span class="project-label">03 — Product Landing Page</span>
+      <h2>Nova AI Speaker</h2>
+      <p>A scroll-driven storytelling experience inspired by modern product launches.</p>
+    </header>
+
+    <div class="product-scroll-stage">
+      <!-- scroll-triggered image + feature reveals go here -->
+    </div>
+  </section>
+
+  <!-- ============ PROJECT 4: RETRO ============ -->
+  <section id="retro" class="project-section" data-theme="retro">
+    <header class="project-intro">
+      <span class="project-label">04 — Retro Design</span>
+      <h2>90s Game Console</h2>
+      <p>Scanlines, glitch effects and pixel typography.</p>
+    </header>
+
+    <div class="retro-features">
+      <h3>Features</h3>
+    </div>
+    <div class="retro-gallery">
+      <h3>Gallery</h3>
+    </div>
+    <div class="retro-reviews">
+      <h3>Reviews</h3>
+    </div>
+    <div class="retro-buy">
+      <a href="#" class="retro-buy-button">Buy Now</a>
+    </div>
+  </section>
+
+  <!-- ============ PROJECT 5: MOTION ADS ============ -->
+  <section id="motion-ads" class="project-section" data-theme="ads">
+    <header class="project-intro">
+      <span class="project-label">05 — Motion Ads Gallery</span>
+      <h2>Animated Advertising Concepts</h2>
+      <p>Five hover-driven ad concepts, each exploring a different motion language.</p>
+    </header>
+
+    <div class="ads-grid">
+      <article class="ad-card" data-ad="watch">
+        <h3>Luxury Watch</h3>
+      </article>
+      <article class="ad-card" data-ad="gaming">
+        <h3>Gaming</h3>
+      </article>
+      <article class="ad-card" data-ad="travel">
+        <h3>Travel</h3>
+      </article>
+      <article class="ad-card" data-ad="fashion">
+        <h3>Fashion</h3>
+      </article>
+      <article class="ad-card" data-ad="ai-product">
+        <h3>AI Product</h3>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer id="site-footer">
+    <p>Designed &amp; built by [Your Name] — exploring HTML, CSS &amp; JavaScript.</p>
+    <a href="https://github.com/yourusername/interactive-design-showcase" target="_blank" rel="noopener">
+      View on GitHub
+    </a>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
