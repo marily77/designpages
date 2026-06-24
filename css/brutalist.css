@@ -1,0 +1,178 @@
+/* ===================================================================
+   BRUTALIST DESIGN — css/brutalist.css
+   Theme: Digital art festival. Raw, loud, deliberately unpolished.
+   Philosophy: break the grid Classic just built — on purpose.
+   =================================================================== */
+
+#brutalist {
+  --brut-red: #FF1E3C;
+  background: #0A0A0A;
+  color: #F5F5F5;
+  border-top: 6px solid #F5F5F5;
+  border-bottom: 6px solid #F5F5F5;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+#brutalist .project-label {
+  color: var(--brut-red);
+  font-size: 0.85rem;
+}
+
+#brutalist .project-intro h2 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+#brutalist .project-intro p {
+  color: #B8B8B8;
+  font-family: var(--font-mono);
+}
+
+/* ---------------------------------------------------------------
+   Brutalist grid — intentionally uneven, overlapping blocks
+   --------------------------------------------------------------- */
+.brutalist-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: var(--space-sm);
+}
+
+.brut-block {
+  border: 3px solid #F5F5F5;
+  padding: var(--space-md);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.brut-block:hover {
+  transform: rotate(-2deg);
+  background: var(--brut-red);
+  color: #0A0A0A;
+}
+
+.brut-block:hover .brut-block-meta {
+  color: #0A0A0A;
+}
+
+/* Headline block — huge, spans most of the width */
+.brut-headline {
+  grid-column: 1 / 7;
+  border-color: var(--brut-red);
+}
+
+.brut-headline h3 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+}
+
+.brut-headline:hover {
+  background: #F5F5F5;
+  color: #0A0A0A;
+  border-color: #0A0A0A;
+  transform: rotate(-1deg);
+}
+
+/* Info blocks — date, location, lineup, tickets */
+.brut-info {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 160px;
+}
+
+.brut-block-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brut-red);
+}
+
+.brut-info h4 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  margin-top: var(--space-sm);
+}
+
+/* Lineup list block — wide, slightly skewed text rows */
+.brut-lineup {
+  grid-column: 1 / 5;
+}
+
+.brut-lineup h4 {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: var(--space-sm);
+  font-size: 1.1rem;
+}
+
+.brut-lineup ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.brut-lineup li {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px dashed #3A3A3A;
+}
+
+/* Tickets CTA block — red, calls to action */
+.brut-cta {
+  grid-column: 5 / 7;
+  background: var(--brut-red);
+  color: #0A0A0A;
+  border-color: var(--brut-red);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.brut-cta:hover {
+  background: #0A0A0A;
+  color: var(--brut-red);
+  border-color: #F5F5F5;
+  transform: rotate(2deg);
+}
+
+.brut-cta:hover .brut-block-meta {
+  color: #0A0A0A;
+}
+
+.brut-cta-button {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  border: 2px solid currentColor;
+  padding: var(--space-xs) var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+/* ---------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .brutalist-grid {
+    grid-template-columns: 1fr;
+  }
+  .brut-headline,
+  .brut-info,
+  .brut-lineup,
+  .brut-cta {
+    grid-column: 1 / 2;
+  }
+}
