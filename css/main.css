@@ -321,7 +321,40 @@ button {
 }
 
 /* ---------------------------------------------------------------
-   7. RESPONSIVE
+   7. ACTIVE NAV LINK (set by main.js via Intersection Observer)
+   --------------------------------------------------------------- */
+.nav-links a.active {
+  color: var(--color-accent);
+}
+
+/* ---------------------------------------------------------------
+   8. THEME VARIANTS (toggled on <body> by theme-switcher in main.js)
+   Each theme reassigns the core accent/background variables —
+   everything built on var(--color-accent) etc. updates automatically.
+   --------------------------------------------------------------- */
+body.theme-brutalist {
+  --color-bg: #0A0A0A;
+  --color-bg-alt: #141414;
+  --color-ink: #F5F5F5;
+  --color-accent: #FF1E3C;
+  --color-mint: #FFFFFF;
+}
+
+body.theme-retro {
+  --color-bg: #1A1230;
+  --color-bg-alt: #241A40;
+  --color-ink: #F4E9D8;
+  --color-accent: #FFC857;
+  --color-mint: #5FD9C9;
+}
+
+body.theme-brutalist,
+body.theme-retro {
+  transition: background-color 0.4s ease;
+}
+
+/* ---------------------------------------------------------------
+   9. RESPONSIVE
    --------------------------------------------------------------- */
 @media (max-width: 640px) {
   .nav-links {
