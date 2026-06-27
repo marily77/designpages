@@ -98,10 +98,57 @@
   }
 
   /* ---------------------------------------------------------------
+     3. PRODUCT SCROLL STAGE (Nova AI Speaker)
+     Orb grows slightly as the user scrolls through the stage.
+     Each .product-feature gets .is-active when it's roughly
+     centered in the viewport — same reveal idea as fade-in,
+     just continuous instead of one-shot.
+     --------------------------------------------------------------- */
+  function initProductStage() {
+    const stage = document.querySelector('.product-scroll-stage');
+    const orb = document.getElementById('product-orb');
+    const features = document.querySelectorAll('.product-feature');
+    if (!stage || !features.length) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      '(prefers-reduced-motion: reduce)'
+    ).matches;
+
+    // Feature activation via Intersection Observer.
+    const featureObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle('is-active', entry.isIntersecting);
+        });
+      },
+      { rootMargin: '-35% 0px -35% 0px', threshold: 0 }
+    );
+    features.forEach((f) => featureObserver.observe(f));
+
+    if (prefersReducedMotion || !orb) return;
+
+    // Orb scale tied to scroll progress through the stage.
+    function updateOrb() {
+      const rect = stage.getBoundingClientRect();
+      const total = rect.height - window.innerHeight;
+      if (total <= 0) return;
+      const scrolled = Math.min(Math.max(-rect.top, 0), total);
+      const progress = scrolled / total; // 0 → 1
+      const scale = 1 + progress * 0.5; // grows up to 1.5x
+      orb.style.setProperty('--orb-scale', scale.toFixed(3));
+    }
+
+    window.addEventListener('scroll', updateOrb, { passive: true });
+    window.addEventListener('resize', updateOrb);
+    updateOrb();
+  }
+
+  /* ---------------------------------------------------------------
      INIT
      --------------------------------------------------------------- */
   document.addEventListener('DOMContentLoaded', () => {
     initFadeIns();
     initCursorFollower();
+    initProductStage();
   });
 })();

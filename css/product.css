@@ -1,0 +1,103 @@
+/* ===================================================================
+   PRODUCT LANDING — included via css/main.css import below the fold
+   Theme: Nova AI Speaker. Scroll-driven storytelling, Apple/Tesla-style.
+   This file is intentionally not in the original 5-file list since
+   the brief grouped "ads.css" separately — Product styles live here
+   and are linked directly from index.html as css/product.css.
+   =================================================================== */
+
+#product {
+  background: linear-gradient(180deg, var(--color-bg) 0%, #0D1117 100%);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+#product .project-label {
+  color: var(--color-mint);
+}
+
+/* ---------------------------------------------------------------
+   Scroll stage — sticky visual, feature copy reveals beside it
+   --------------------------------------------------------------- */
+.product-scroll-stage {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.product-visual {
+  position: sticky;
+  top: 120px;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-orb {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #DCEFFF, #8FB8FF 35%, #2E5BFF 70%, #15234A 100%);
+  box-shadow: 0 0 80px rgba(46, 91, 255, 0.4);
+  transition: transform 0.6s var(--ease), box-shadow 0.6s var(--ease);
+  transform: scale(var(--orb-scale, 1));
+}
+
+.product-features {
+  display: flex;
+  flex-direction: column;
+  gap: 40vh;
+  padding-top: 10vh;
+  padding-bottom: 20vh;
+}
+
+.product-feature {
+  opacity: 0.25;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  max-width: 420px;
+}
+
+.product-feature.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.product-feature .feature-index {
+  font-family: var(--font-mono);
+  font-size: var(--fs-eyebrow);
+  color: var(--color-mint);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-feature h3 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  margin: var(--space-xs) 0 var(--space-sm);
+}
+
+.product-feature p {
+  color: var(--color-ink-muted);
+  font-size: var(--fs-lead);
+}
+
+/* ---------------------------------------------------------------
+   Responsive — drop the sticky behaviour, stack normally
+   --------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .product-scroll-stage {
+    grid-template-columns: 1fr;
+  }
+  .product-visual {
+    position: static;
+    height: 40vh;
+    margin-bottom: var(--space-lg);
+  }
+  .product-features {
+    gap: var(--space-lg);
+    padding: 0;
+  }
+}
