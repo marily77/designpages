@@ -1,0 +1,224 @@
+/* ===================================================================
+   RETRO DESIGN — css/retro.css
+   Theme: 90s game console. Scanlines, glitch, pixel typography.
+   Philosophy: nostalgia as a design language, not just a filter.
+   =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+#retro {
+  --retro-bg: #1A1230;
+  --retro-bg-alt: #241A40;
+  --retro-yellow: #FFC857;
+  --retro-cyan: #5FD9C9;
+  --retro-magenta: #FF4FA3;
+
+  position: relative;
+  background: var(--retro-bg);
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------
+   Scanlines overlay — subtle CRT texture across the whole section
+   --------------------------------------------------------------- */
+#retro::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.04) 0px,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+#retro .project-label,
+#retro h2,
+#retro h3,
+#retro h4 {
+  font-family: 'Press Start 2P', var(--font-mono);
+}
+
+#retro .project-label {
+  color: var(--retro-magenta);
+}
+
+#retro .project-intro h2 {
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  color: var(--retro-yellow);
+  text-shadow: 3px 3px 0 var(--retro-magenta);
+}
+
+#retro .project-intro p {
+  font-family: var(--font-mono);
+  color: var(--color-mint);
+}
+
+/* ---------------------------------------------------------------
+   Glitch effect — applied to the section heading on hover
+   --------------------------------------------------------------- */
+.retro-glitch {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.retro-glitch:hover {
+  animation: glitchShift 0.3s steps(2, end) infinite;
+}
+
+@keyframes glitchShift {
+  0%   { text-shadow: 3px 3px 0 var(--retro-magenta); transform: translate(0, 0); }
+  25%  { text-shadow: -3px -2px 0 var(--retro-cyan); transform: translate(-2px, 1px); }
+  50%  { text-shadow: 3px -3px 0 var(--retro-yellow); transform: translate(2px, -1px); }
+  75%  { text-shadow: -2px 3px 0 var(--retro-magenta); transform: translate(1px, 2px); }
+  100% { text-shadow: 3px 3px 0 var(--retro-magenta); transform: translate(0, 0); }
+}
+
+/* ---------------------------------------------------------------
+   Features — pixel-bordered cards
+   --------------------------------------------------------------- */
+.retro-features {
+  margin-bottom: var(--space-xl);
+  position: relative;
+  z-index: 2;
+}
+
+.retro-features h3,
+.retro-gallery h3,
+.retro-reviews h3 {
+  font-size: 1rem;
+  color: var(--retro-cyan);
+  margin-bottom: var(--space-md);
+}
+
+.retro-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.retro-card {
+  background: var(--retro-bg-alt);
+  border: 3px solid var(--retro-yellow);
+  box-shadow: 6px 6px 0 var(--retro-magenta);
+  padding: var(--space-md);
+  font-family: var(--font-mono);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.retro-card:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 var(--retro-magenta);
+}
+
+.retro-card h4 {
+  font-size: 0.8rem;
+  color: var(--retro-yellow);
+  margin-bottom: var(--space-xs);
+}
+
+.retro-card p {
+  font-size: 0.9rem;
+  color: var(--color-ink-muted);
+}
+
+/* ---------------------------------------------------------------
+   Gallery — pixel-style image frames
+   --------------------------------------------------------------- */
+.retro-gallery {
+  margin-bottom: var(--space-xl);
+  position: relative;
+  z-index: 2;
+}
+
+.retro-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+}
+
+.retro-thumb {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, var(--retro-cyan), var(--retro-magenta));
+  border: 3px solid var(--retro-bg-alt);
+  image-rendering: pixelated;
+  position: relative;
+}
+
+.retro-thumb::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-conic-gradient(
+    rgba(0,0,0,0.15) 0% 25%,
+    transparent 0% 50%
+  );
+  background-size: 8px 8px;
+}
+
+/* ---------------------------------------------------------------
+   Reviews — pixel quote blocks
+   --------------------------------------------------------------- */
+.retro-reviews {
+  margin-bottom: var(--space-xl);
+  position: relative;
+  z-index: 2;
+}
+
+.retro-review {
+  font-family: var(--font-mono);
+  border-left: 4px solid var(--retro-cyan);
+  padding-left: var(--space-sm);
+  margin-bottom: var(--space-md);
+  color: var(--color-ink);
+}
+
+.retro-review .stars {
+  color: var(--retro-yellow);
+  display: block;
+  margin-bottom: var(--space-xs);
+}
+
+/* ---------------------------------------------------------------
+   Buy Now — flashing pixel button
+   --------------------------------------------------------------- */
+.retro-buy {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.retro-buy-button {
+  display: inline-block;
+  font-family: 'Press Start 2P', var(--font-mono);
+  font-size: 1rem;
+  background: var(--retro-magenta);
+  color: var(--retro-bg);
+  border: 3px solid var(--retro-yellow);
+  padding: var(--space-sm) var(--space-lg);
+  animation: pixelPulse 1.2s steps(2, end) infinite;
+}
+
+@keyframes pixelPulse {
+  0%, 100% { box-shadow: 0 0 0 var(--retro-yellow); }
+  50%      { box-shadow: 0 0 0 6px rgba(255, 200, 87, 0.4); }
+}
+
+/* ---------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .retro-feature-grid {
+    grid-template-columns: 1fr;
+  }
+  .retro-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
