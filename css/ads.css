@@ -1,0 +1,271 @@
+/* ===================================================================
+   MOTION ADS GALLERY — css/ads.css
+   Five hover-driven ad concepts, each its own motion language.
+   This is the strongest "I understand motion design" signal in
+   the whole showcase — treat every hover state as a tiny film.
+   =================================================================== */
+
+#motion-ads {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+.ads-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-sm);
+}
+
+.ad-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius);
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--color-bg-raised);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-sm);
+}
+
+.ad-card h3 {
+  position: relative;
+  z-index: 3;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+/* Background photo layer — sits beneath every hover effect (z-index 1/2)
+   and beneath the title (z-index 3). Effects render on top automatically. */
+.ad-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  filter: brightness(0.75);
+  transition: filter 0.5s ease, transform 0.6s var(--ease);
+}
+
+.ad-card:hover .ad-bg {
+  filter: brightness(0.55);
+  transform: scale(1.04);
+}
+
+/* ---------------------------------------------------------------
+   1. LUXURY WATCH — golden shimmer sweep + text reveal
+   --------------------------------------------------------------- */
+.ad-card[data-ad="watch"] {
+  background: linear-gradient(160deg, #1A1610, #2B2114);
+}
+
+.ad-card[data-ad="watch"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 215, 140, 0.5) 45%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.9s var(--ease);
+  z-index: 1;
+}
+
+.ad-card[data-ad="watch"]:hover::before {
+  transform: translateX(100%);
+}
+
+.ad-card[data-ad="watch"] h3 {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+  color: #FFD78C;
+}
+
+.ad-card[data-ad="watch"]:hover h3 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------------
+   2. GAMING — glitch slice + neon flicker
+   --------------------------------------------------------------- */
+.ad-card[data-ad="gaming"] {
+  background: #0A0A14;
+  border: 1px solid #2A2A40;
+}
+
+.ad-card[data-ad="gaming"] h3 {
+  color: #5FE0FF;
+  text-shadow: 0 0 8px rgba(95, 224, 255, 0.6);
+}
+
+.ad-card[data-ad="gaming"]::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 48%, rgba(95, 224, 255, 0.15) 50%, transparent 52%);
+  opacity: 0;
+  z-index: 2;
+}
+
+.ad-card[data-ad="gaming"]:hover {
+  animation: gamingGlitch 0.5s steps(3, end) infinite;
+}
+
+.ad-card[data-ad="gaming"]:hover::after {
+  opacity: 1;
+}
+
+@keyframes gamingGlitch {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-3px, 1px); }
+  40%  { transform: translate(2px, -2px); }
+  60%  { transform: translate(-1px, 2px); }
+  80%  { transform: translate(3px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ---------------------------------------------------------------
+   3. TRAVEL — drifting clouds + parallax background shift
+   --------------------------------------------------------------- */
+.ad-card[data-ad="travel"] {
+  background: linear-gradient(180deg, #ffffff 0%, #d1e2f2 100%);
+}
+
+.ad-card[data-ad="travel"] h3 {
+  color: #88e7bc;
+}
+
+.ad-card[data-ad="travel"]::before,
+.ad-card[data-ad="travel"]::after {
+  content: '';
+  position: absolute;
+  width: 140%;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  filter: blur(6px);
+  transition: transform 1.2s var(--ease);
+}
+
+.ad-card[data-ad="travel"]::before {
+  top: 20%;
+  left: -20%;
+}
+
+.ad-card[data-ad="travel"]::after {
+  top: 45%;
+  left: -40%;
+  opacity: 0.7;
+}
+
+.ad-card[data-ad="travel"]:hover::before {
+  transform: translateX(60%);
+}
+
+.ad-card[data-ad="travel"]:hover::after {
+  transform: translateX(70%);
+}
+
+/* ---------------------------------------------------------------
+   4. FASHION — magazine-style cross-fade / crop transition
+   --------------------------------------------------------------- */
+.ad-card[data-ad="fashion"] {
+  background: #F2F0EB;
+}
+
+.ad-card[data-ad="fashion"] h3 {
+  color: #c58c5a;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.3rem;
+}
+
+.ad-card[data-ad="fashion"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #1A1A1A;
+  clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  transition: clip-path 0.6s var(--ease);
+  z-index: 1;
+}
+
+.ad-card[data-ad="fashion"]:hover::before {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 60%);
+}
+
+.ad-card[data-ad="fashion"]:hover h3 {
+  color: #F2F0EB;
+}
+
+/* ---------------------------------------------------------------
+   5. AI PRODUCT — holographic shimmer + scan light
+   --------------------------------------------------------------- */
+.ad-card[data-ad="ai-product"] {
+  background: #0D0E12;
+  border: 1px solid rgba(111, 224, 197, 0.3);
+}
+
+.ad-card[data-ad="ai-product"] h3 {
+  color: var(--color-mint);
+}
+
+.ad-card[data-ad="ai-product"]::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(111, 224, 197, 0.35) 50%,
+    rgba(255, 107, 74, 0.2) 55%,
+    transparent 70%
+  );
+  transform: translateY(100%);
+  transition: transform 0.8s var(--ease);
+  z-index: 1;
+}
+
+.ad-card[data-ad="ai-product"]:hover::before {
+  transform: translateY(-20%);
+}
+
+.ad-card[data-ad="ai-product"]::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-mint);
+  box-shadow: 0 0 12px var(--color-mint);
+  top: -10%;
+  transition: top 1.1s linear;
+  z-index: 2;
+}
+
+.ad-card[data-ad="ai-product"]:hover::after {
+  top: 110%;
+}
+
+/* ---------------------------------------------------------------
+   Responsive
+   --------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .ads-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .ads-grid {
+    grid-template-columns: 1fr;
+  }
+}
