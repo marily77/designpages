@@ -3,7 +3,7 @@
 A single-page exploration of five distinct web design approaches — built with
 plain HTML, CSS and JavaScript, with no frameworks or build tools.
 
-**[Live Demo →](#)** *(add your GitHub Pages link here once deployed)*
+**[Live Demo →](#)** *(https://marily77.github.io/designpages/)*
 
 ---
 
@@ -120,7 +120,7 @@ Then visit `http://localhost:8000`.
 ## 👤 Author
 
 **[Marily Valkijainen]**
-[marily77@gmail.com] · [LinkedIn] · [Portfolio site]
+[marily77@gmail.com] · [https://www.linkedin.com/in/marily-valkijainen/] · [Portfolio site]
 
 ---
 
